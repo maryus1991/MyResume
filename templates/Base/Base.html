@@ -1,0 +1,22 @@
+{% load render_partial  %}
+
+<!doctype html>
+<html lang="">
+<head>
+    {% include 'Base/References/HeadeReferences.html' %}
+    <title>
+        {% block title %}
+        	
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% render_partial   'MyResumeMainModule.views.HeaderLayoutPartial' %}
+{% block content %}
+
+{% endblock %}
+
+
+{% include 'Base/References/FooteReferences.html' %}
+</body>
+</html>
