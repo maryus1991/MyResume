@@ -12,7 +12,7 @@ class LastProjects(models.Model):
     UserSubSkill = models.ManyToManyField(UserSubSkill, null=True, blank=True, related_name='LastProjects')
     OtherSubSkill = models.CharField(max_length=100, null=True, blank=True)
     User = models.ForeignKey(User, on_delete=models.CASCADE, related_name='LastProjects')
-    UserSkill = models.ForeignKey(UserSkill, on_delete=models.CASCADE, related_name='LastProjects')
+    UserSkill = models.ForeignKey(UserSkill, on_delete=models.CASCADE, related_name='LastProject')
     Link_url = models.URLField(max_length=200)
     description = models.TextField()
     GitHub_url = models.URLField(max_length=200)
