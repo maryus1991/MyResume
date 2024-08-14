@@ -9,7 +9,7 @@ from MyResumeSkill.models import UserSkill, UserSubSkill
 class LastProjects(models.Model):
     image = models.ImageField(upload_to='LastProjects/')
     title = models.CharField(max_length=100)
-    UserSubSkill = models.ManyToManyField(UserSubSkill, null=True, blank=True, related_name='LastProjects')
+    UserSubSkill = models.ManyToManyField(UserSubSkill, null=True, blank=True, related_name='LastProject')
     OtherSubSkill = models.CharField(max_length=100, null=True, blank=True)
     User = models.ForeignKey(User, on_delete=models.CASCADE, related_name='LastProjects')
     UserSkill = models.ForeignKey(UserSkill, on_delete=models.CASCADE, related_name='LastProject')
@@ -21,6 +21,9 @@ class LastProjects(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_project_sub_skill(self):
+        return self.UserSubSkill.all()
 
 
 class LastProjectGallery(models.Model):

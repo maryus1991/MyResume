@@ -21,19 +21,25 @@
                                 </li>
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-skills">Skills</a>
-                                </li>                                
+                                </li>                     
+                                {% if subdomain.UserProfile.showing_exp %}
+                                	
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-experience">Experiences</a>
                                 </li>                                
+                                {% endif %} 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#mh-portfolio">Portfolio</a>
+                                    <a class="nav-link" href="#mh-portfolio">Last Project</a>
                                 </li>                               
 {#                                <li class="nav-item">#}
 {#                                    <a class="nav-link" href="#mh-pricing">Pricing</a>#}
 {#                                </li>#}
+                                {% if subdomain.UserProfile.posts %}
+                                	
                                 <li class="nav-item">
                                     <a class="nav-link" href="#mh-blog">Blog</a>
                                 </li>
+                                {% endif %} 
                                 <li class="nav-item">
                                    <a class="nav-link" href="#mh-contact">Contact</a>
                                 </li>

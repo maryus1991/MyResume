@@ -18,8 +18,7 @@
                                             <div class="each-info media-body">
                                                 <h4>Address</h4>
                                                 <address>
-                                                    5th Avenue, 34th floor, <br> 
-                                                     New york
+                                                    {{ subdomain.UserProfile.short_addr }}
                                                 </address>
                                             </div>
                                         </div>
@@ -31,8 +30,8 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Email</h4>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a><br>
-                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>
+                                                <a href="mailto:yourmail@email.com">{{ subdomain.email }}</a><br>
+{#                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>#}
                                             </div>
                                         </div>
                                     </div>
@@ -43,8 +42,8 @@
                                             </div>
                                             <div class="each-info media-body">
                                                 <h4>Phone</h4>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a><br>
-                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>
+                                                <a href="callto:{{ subdomain.UserProfile.phone_number }}">{{ subdomain.UserProfile.phone_number }}</a><br>
+{#                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>#}
                                             </div>
                                         </div>
                                     </div>
@@ -80,15 +79,15 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="text-left text-xs-center">
-                                                <p>All right reserved Siful Islam @ 2018</p>
+                                                <p>{{ subdomain.UserProfile.reserved_rights_text }}</p>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <ul class="social-icon">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+
+                                                <li><a href="http://{{ subdomain.UserProfile.git_url }}"><i class="fa fa-github"></i></a></li>
+                                                <li><a href="http://{{ subdomain.UserProfile.linkin_url }}"><i class="fa fa-linkedin"></i></a></li>
+                                                <li><a href="http://{{ subdomain.UserProfile.telegram_url }}"><i class="fa fa-telegram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
