@@ -49,25 +49,36 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <form id="contactForm" class="single-form quate-form wow fadeInUp" data-toggle="validator">
-                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                    <form class="single-form quate-form wow fadeInUp" action="" method="post">
+                                        <div class="h3 text-center alert-danger">
+                                            {{ Contactus_form.errors }}
+                                        </div>
+                                        {% csrf_token %}
                                         <div class="row">
-                                            <div class="col-sm-12">
-                                                <input name="name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>
+                                            <div class="hidden">
+                                                {{ Contactus_form.Profile }}
+                                                {{ Contactus_form.skill }}
                                             </div>
-                
                                             <div class="col-sm-12">
-                                                <input name="name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>
+{#                                                <input name="first_name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>#}
+                                                    {{ Contactus_form.first_name }}
                                             </div>
-                
+
                                             <div class="col-sm-12">
-                                                <input name="name" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>
+{#                                                <input name="last_name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>#}
+                                                {{ Contactus_form.last_name }}
                                             </div>
-                
+
                                             <div class="col-sm-12">
-                                                <textarea class="contact-message" id="message" rows="6" placeholder="Your Message" required></textarea>
+                                                {{ Contactus_form.email}}
+{#                                                <input name="email" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>#}
                                             </div>
-                                            
+
+                                            <div class="col-sm-12">
+{#                                                <textarea class="contact-message" id="message" name="message" rows="6" placeholder="Your Message" required></textarea>#}
+                                                {{ Contactus_form.message }}
+                                            </div>
+{#                                            {{ Contactus_form }}#}
                                             <!-- Subject Button -->
                                             <div class="btn-form col-sm-12">
                                                 <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>

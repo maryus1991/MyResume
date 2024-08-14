@@ -45,8 +45,8 @@ class UserAbout(models.Model):
 
 
 class ContactUser(models.Model):
-    Profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='ContactUser')
-    skill = models.CharField(max_length=50)
+    Profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='ContactUser', default=None, null=True, blank=True)
+    skill = models.CharField(max_length=50, default='user')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)

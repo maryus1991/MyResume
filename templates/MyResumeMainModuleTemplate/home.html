@@ -4,8 +4,9 @@
 {% block title %}
     Mostafa Ebrahim Zadeh
 {% endblock %}
-
 {% block content %}
+{% render_partial   'MyResumeMainModule.views.HeaderLayoutPartial' user=user %}
+    
     <body class="dark-vertion black-bg">
     {#        white-vertion #}
 
@@ -29,31 +30,29 @@
                             <div class="mh-promo wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.1s">
                                 <span>Hello I'm</span>
                             </div>
-
                             <h2 class="wow fadeInUp" style="font-size: 3em " data-wow-duration="1s"
                                 data-wow-delay="0.3s">{{ user.UserProfile.first_name }} {{ user.UserProfile.last_name }}</h2>
                             <h4 class="wow fadeInUp" data-wow-duration="0.8s"
                                 data-wow-delay="0.3s">{{ user.UserProfile.Work_space }}</h4>
-
                             <ul>
                                 <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s"><i
                                         class="fa fa-envelope"></i><a href="mailto:">{{ user.email }}</a></li>
                                 <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s"><i
                                         class="fa fa-phone"></i><a
-                                        href="callto:{{ user.UserProfile.phone_number }}">{{ user.UserProfile.phone_number }}</a></li>
+                                        href="callto:{{ user.UserProfile.phone_number }}">{{ user.UserProfile.phone_number }}</a>
+                                </li>
                                 <li class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s"><i
                                         class="fa fa-map-marker"></i>
                                     <address>{{ user.UserProfile.short_addr }}</address>
                                 </li>
                             </ul>
-
                             <ul class="social-icon wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.7s">
-
-                                <li><a href="http://{{ user.UserProfile.git_url }}"><i class="fa fa-github"></i></a></li>
-                                <li><a href="http://{{ user.UserProfile.linkin_url }}"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="http://{{ user.UserProfile.git_url }}"><i class="fa fa-github"></i></a>
+                                </li>
+                                <li><a href="http://{{ user.UserProfile.linkin_url }}"><i
+                                        class="fa fa-linkedin"></i></a></li>
                                 <li><a href="http://{{ user.UserProfile.telegram_url }}"><i class="fa fa-telegram"></i></a>
                                 </li>
-
                             </ul>
                         </div>
                     </div>
@@ -368,44 +367,28 @@
         </div>
 
         {% for last_projects_post in last_projects_posts %}
-
-
-
             <div class="mh-portfolio-modal" id="{{ last_projects_post.id }}">
                 <div class="container">
                     <div class="row mh-portfolio-modal-inner">
-
-
                         <div class="col-sm-5">
                             <h2>{{ last_projects_post.title }}</h2>
                             <p>{{ last_projects_post.description }}</p>
                             <div class="mh-about-tag">
-                                <ul>
-
-{#                                    {% for study_expt in last_projects_post.get_project_sub_skill %}#}
-{#                                    	#}
-{#                                    {% endfor %}#}
-
-{#                                    <li><span></span></li>#}
-
-                                </ul>
+                                {% render_partial 'MyResumeMainModule.views.mh_about_tag_partial' last_projects_post=last_projects_post %}
                             </div>
                             <div class="row">
-                            {% if last_projects_post.Link_url %}
-                                <a href="{{last_projects_post.Link_url  }}" class="btn btn-fill">Live Project</a>
-
-                            {% endif %}
-                             <div class="span"> <article>           </article> </div>
-                            {% if last_projects_post.GitHub_url %}
-                                <a href="{{  last_projects_post.GitHub_url}}" class="btn btn-fill">GitHub</a>
-
-                            {% endif %}
+                                {% if last_projects_post.Link_url %}
+                                    <a href="{{ last_projects_post.Link_url }}" class="btn btn-fill">Live Project</a>
+                                {% endif %}
+                                {% if last_projects_post.GitHub_url %}
+                                    <a href="{{ last_projects_post.GitHub_url }}" class="btn btn-fill">GitHub</a>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-sm-7">
                             <div class="mh-portfolio-modal-img">
-                                <img src="{{ last_projects_post.image.url }}" alt="" class="img-fluid">
-{#                                <img src="assets/images/pr-1.jif" alt="" class="img-fluid">#}
+                                {% render_partial 'MyResumeMainModule.views.mh_portfolio_modal_img' last_projects_post=last_projects_post %}
+                               
                             </div>
                         </div>
                     </div>
@@ -614,7 +597,7 @@
     
     -->
 
-    {% render_partial 'MyResumeMainModule.views.FooterLayoutPartial' %}
+    {% render_partial 'MyResumeMainModule.views.FooterLayoutPartial' user=user   %}
 
     </body>
 {% endblock %}
