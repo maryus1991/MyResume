@@ -5,5 +5,9 @@ from .models import UserProfile, UserAbout, ContactUser, UserVisit
 admin.site.register(UserProfile)
 admin.site.register(UserAbout)
 admin.site.register(ContactUser)
-admin.site.register(UserVisit)
+
+
+@admin.register(UserVisit)
+class UserVisitAdmin(admin.ModelAdmin):
+    list_display = ('ip', 'created_at',)
 

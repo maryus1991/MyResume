@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from django.contrib.auth import models
 from django.db import models
 from django.contrib.auth.models import User
@@ -10,6 +12,8 @@ from MyResumeSkill.models import UserSkill
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='UserProfile')
     phone_number = models.CharField(max_length=20, unique=True)
+    second_phone_number = models.CharField(max_length=20, unique=True, null=True)
+    second_email = models.EmailField(null=True)
     image = models.ImageField(upload_to='Profile_Image/')
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -61,6 +65,7 @@ class ContactUser(models.Model):
 class UserVisit(models.Model):
     ip = models.GenericIPAddressField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='UserViews')
+    created_at = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_deleted = models.BooleanField(default=False)
 

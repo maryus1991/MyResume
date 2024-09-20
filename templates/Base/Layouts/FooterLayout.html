@@ -1,155 +1,182 @@
-{% load static %}       
-       
-        <footer class="mh-footer mh-footer-3" id="mh-contact">
-            <div class="container-fluid">
-                <div class="row section-separator">
-                    <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                        <h3>Contact Me</h3>
-                    </div>
-                    <div class="map-image image-bg col-sm-12">
-                        <div class="container mt-30">
+{% load static %}
+
+<footer class="mh-footer mh-footer-3" id="mh-contact">
+    <div class="container-fluid">
+        <div class="row section-separator">
+            <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                <h3>Contact Me</h3>
+            </div>
+            <div class="map-image image-bg col-sm-12">
+                <div class="container mt-30">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 mh-footer-address">
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item dark-bg shadow-1 media wow fadeInUp"
+                                     data-wow-duration="0.8s" data-wow-delay="0.2s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-location-arrow"></i>
+                                    </div>
+                                    <div class="each-info media-body">
+                                        <h4>Address</h4>
+                                        <address>
+                                            {{ subdomain.UserProfile.short_addr }}
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp"
+                                     data-wow-duration="0.8s" data-wow-delay="0.4s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </div>
+                                    <div class="each-info media-body">
+                                        <h4>Email</h4>
+                                        <a href="mailto:{{ subdomain.email }}">{{ subdomain.email }}</a><br>
+                                        {% if subdomain.UserProfile.second_email %}
+                                            <a href="mailto:{{ subdomain.UserProfile.second_email }}">{{ subdomain.UserProfile.second_email }}</a>
+                                            <br>
+
+                                        {% endif %}
+                                        {#                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 xs-no-padding">
+                                <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp"
+                                     data-wow-duration="0.8s" data-wow-delay="0.6s">
+                                    <div class="each-icon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="each-info media-body">
+                                        <h4>Phone</h4>
+                                        <a href="tel:{{ subdomain.UserProfile.phone_number }}">{{ subdomain.UserProfile.phone_number }}</a><br>
+                                        {% if subdomain.UserProfile.second_phone_number %}
+                                            <a href="tel:{{ subdomain.UserProfile.second_phone_number }}">{{ subdomain.UserProfile.second_phone_number }}</a>
+                                            <br>
+
+                                        {% endif %}
+                                        {#                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                            <form class="single-form quate-form wow fadeInUp" action="" method="post">
+                                <div class="h3 text-center alert-danger">
+                                    {{ Contactus_form.errors }}
+                                </div>
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="hidden">
+                                        {{ Contactus_form.Profile }}
+                                        {{ Contactus_form.skill }}
+                                    </div>
+                                    <div class="col-sm-12">
+                                        {#                                                <input name="first_name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>#}
+                                        {{ Contactus_form.first_name }}
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        {#                                                <input name="last_name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>#}
+                                        {{ Contactus_form.last_name }}
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        {{ Contactus_form.email }}
+                                        {#                                                <input name="email" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>#}
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        {#                                                <textarea class="contact-message" id="message" name="message" rows="6" placeholder="Your Message" required></textarea>#}
+                                        {{ Contactus_form.message }}
+                                    </div>
+                                    {#                                            {{ Contactus_form }}#}
+                                    <!-- Subject Button -->
+                                    <div class="btn-form col-sm-12">
+                                        <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send
+                                            Message
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
                             <div class="row">
-                                <div class="col-sm-12 col-md-6 mh-footer-address">
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item dark-bg shadow-1 media wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-location-arrow"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Address</h4>
-                                                <address>
-                                                    {{ subdomain.UserProfile.short_addr }}
-                                                </address>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-envelope-o"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Email</h4>
-                                                <a href="mailto:yourmail@email.com">{{ subdomain.email }}</a><br>
-{#                                                <a href="mailto:yourmail@email.com">yourmail@email.com</a>#}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 xs-no-padding">
-                                        <div class="mh-address-footer-item media dark-bg shadow-1 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.6s">
-                                            <div class="each-icon">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="each-info media-body">
-                                                <h4>Phone</h4>
-                                                <a href="callto:{{ subdomain.UserProfile.phone_number }}">{{ subdomain.UserProfile.phone_number }}</a><br>
-{#                                                <a href="callto:(880)-8976-987">(880)-8976-987</a>#}
-                                            </div>
-                                        </div>
+                                <div class="col-sm-6">
+                                    <div class="text-left text-xs-center">
+                                        <p>{{ subdomain.UserProfile.reserved_rights_text }}</p>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <form class="single-form quate-form wow fadeInUp" action="" method="post">
-                                        <div class="h3 text-center alert-danger">
-                                            {{ Contactus_form.errors }}
-                                        </div>
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="hidden">
-                                                {{ Contactus_form.Profile }}
-                                                {{ Contactus_form.skill }}
-                                            </div>
-                                            <div class="col-sm-12">
-{#                                                <input name="first_name" class="contact-name form-control" id="name" type="text" placeholder="First Name" required>#}
-                                                    {{ Contactus_form.first_name }}
-                                            </div>
+                                <div class="col-sm-6">
+                                    <ul class="social-icon">
 
-                                            <div class="col-sm-12">
-{#                                                <input name="last_name" class="contact-email form-control" id="L_name" type="text" placeholder="Last Name" required>#}
-                                                {{ Contactus_form.last_name }}
-                                            </div>
-
-                                            <div class="col-sm-12">
-                                                {{ Contactus_form.email}}
-{#                                                <input name="email" class="contact-subject form-control" id="email" type="email" placeholder="Your Email" required>#}
-                                            </div>
-
-                                            <div class="col-sm-12">
-{#                                                <textarea class="contact-message" id="message" name="message" rows="6" placeholder="Your Message" required></textarea>#}
-                                                {{ Contactus_form.message }}
-                                            </div>
-{#                                            {{ Contactus_form }}#}
-                                            <!-- Subject Button -->
-                                            <div class="btn-form col-sm-12">
-                                                <button type="submit" class="btn btn-fill btn-block" id="form-submit">Send Message</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-sm-12 mh-copyright wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="text-left text-xs-center">
-                                                <p>{{ subdomain.UserProfile.reserved_rights_text }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <ul class="social-icon">
-
-                                                <li><a href="http://{{ subdomain.UserProfile.git_url }}"><i class="fa fa-github"></i></a></li>
-                                                <li><a href="http://{{ subdomain.UserProfile.linkin_url }}"><i class="fa fa-linkedin"></i></a></li>
-                                                <li><a href="http://{{ subdomain.UserProfile.telegram_url }}"><i class="fa fa-telegram"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                        <li><a href="http://{{ subdomain.UserProfile.git_url }}"><i
+                                                class="fa fa-github"></i></a></li>
+                                        <li><a href="http://{{ subdomain.UserProfile.linkin_url }}"><i
+                                                class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="http://{{ subdomain.UserProfile.telegram_url }}"><i
+                                                class="fa fa-telegram"></i></a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
-
-
-      <div class="demo-style-switch" id="switch-style">
-    <a id="toggle-switcher" class="switch-button"><i class="fa fa-snowflake-o fa-spin"></i></a>
-        <div class="switched-options">
-            <ul>
-                <li class="mh-demo-styles"> 
-                    <h4>White Mode </h4>
-                    <a href=""> <img src="../../../static/assets/images/h1.png" alt="" class="img-fluid">
-                    
-                    </a>
-                </li>
-            </ul>
-            <div class="config-title">
-                Colors :
-            </div>h2w.png
-            <ul class="styles">
-                <li><a href="#" onclick="setActiveStyleSheet('blue'); return false;" title="Blue">
-                    <div class="blue"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('purple'); return false;" title="Purple">
-                    <div class="purple"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('blue-munsell'); return false;" title="Blue Munsell">
-                    <div class="blue-munsell"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('orange'); return false;" title="Orange">
-                    <div class="orange"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('slate'); return false;" title="Slate">
-                    <div class="slate"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('green'); return false;" title="Green">
-                    <div class="green"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('yellow'); return false;" title="Yellow">
-                    <div class="yellow"></div></a>
-                </li>
-                <li><a href="#" onclick="setActiveStyleSheet('red'); return false;" title="Red">
-                    <div class="red"></div></a>
-                </li>
-            </ul>
         </div>
     </div>
+</footer>
+
+
+<div class="demo-style-switch" id="switch-style">
+    <a id="toggle-switcher" class="switch-button"><i class="fa fa-snowflake-o fa-spin"></i></a>
+    <div class="switched-options">
+        <ul>
+            <li class="mh-demo-styles">
+                <h4>White Mode </h4>
+                <a href=""> <img src="../../../static/assets/images/h1.png" alt="" class="img-fluid">
+
+                </a>
+            </li>
+        </ul>
+        <div class="config-title">
+            Colors :
+        </div>
+        h2w.png
+        <ul class="styles">
+            <li><a href="#" onclick="setActiveStyleSheet('blue'); return false;" title="Blue">
+                <div class="blue"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('purple'); return false;" title="Purple">
+                <div class="purple"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('blue-munsell'); return false;" title="Blue Munsell">
+                <div class="blue-munsell"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('orange'); return false;" title="Orange">
+                <div class="orange"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('slate'); return false;" title="Slate">
+                <div class="slate"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('green'); return false;" title="Green">
+                <div class="green"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('yellow'); return false;" title="Yellow">
+                <div class="yellow"></div>
+            </a>
+            </li>
+            <li><a href="#" onclick="setActiveStyleSheet('red'); return false;" title="Red">
+                <div class="red"></div>
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>
